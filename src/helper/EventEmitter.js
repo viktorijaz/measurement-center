@@ -38,7 +38,9 @@ class EventEmitter {
   startProducing = (name) => {
     var fnName = createName(name);
     this.subjects[fnName] || (this.subjects[fnName] = new Subject());
-    this.producer.subscribe((i) => this.subjects[fnName].next(i));
+    this.producer.subscribe((i) => {
+      this.subjects[fnName].next(i);
+    });
   };
 
   emit = (name, data) => {
@@ -63,7 +65,7 @@ class EventEmitter {
     var subjects = this.subjects;
     for (var prop in subjects) {
       if (hasOwnProp.call(subjects, prop)) {
-        subjects[prop].dispose();
+        subjects[prop].unsubscribe();
       }
     }
     this.subjects = {};

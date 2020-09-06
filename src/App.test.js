@@ -1,9 +1,11 @@
 import React from 'react';
-import { render } from '@testing-library/react';
 import App from './App';
+import { mount } from 'enzyme';
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe('Main App component', () => {
+  it('renders Welcome header', () => {
+    const wrapper = mount(<App />);
+
+    expect(wrapper.find('h1').text()).toMatch(/Welcome/);
+  });
 });
