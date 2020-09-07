@@ -18,3 +18,12 @@ All 3 systems must emit at least one value before 1 display object is ever sent 
 #### Run the project:
 
 `npm start`
+
+#### Run the test:
+
+`npm run test`
+
+There are two main test files:
+
+- **marble test file** that uses marble diagrams and RxJS TestScheduler class to specify inner working of observables
+- **integration test file** - that investigates how EventEmitter and Gauge component work together
